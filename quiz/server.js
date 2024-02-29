@@ -51,6 +51,17 @@ app.post('/write/adduser', (req, res) => {
   res.send('done');
 })
 
+app.use('/read/username', addMsgToRequest);
+
+app.get("/read/username/:name", (req, res) => {
+  let usernames = req.users.filer(user => {
+    return user.name === req.params.name;
+  }).map(user => {
+    return {id: user.id, username: user.username}
+  });
+  res.send(usernames);
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
