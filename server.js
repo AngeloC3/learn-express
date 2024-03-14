@@ -49,8 +49,8 @@ app.post('/write/adduser', (req, res) => {
     else console.log('User Saved');
   });
   res.send('done');
-})
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
-})
+});
